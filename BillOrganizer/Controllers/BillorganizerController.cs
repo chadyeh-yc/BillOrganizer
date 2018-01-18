@@ -13,5 +13,17 @@ namespace BillOrganizer.Controllers
         {
             return View();
         }
+
+        [ChildActionOnly]
+        public ActionResult ShowHistory()
+        {
+            var history = new List<Models.ViewModels.BillorganizerViewModel>
+            {
+                new Models.ViewModels.BillorganizerViewModel {Type=Models.ViewModels.BillType.收入, Amount=100, Date = new DateTime(2017,4,10), Remark="發傳單" },
+                new Models.ViewModels.BillorganizerViewModel {Type=Models.ViewModels.BillType.支出, Amount=40, Date = new DateTime(2017,4,11), Remark="咖啡" },
+            };
+
+            return View(history);
+        }
     }
 }
