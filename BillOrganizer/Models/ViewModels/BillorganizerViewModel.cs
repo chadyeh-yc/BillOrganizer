@@ -9,10 +9,14 @@ namespace BillOrganizer.Models.ViewModels
     public class BillorganizerViewModel
     {
         [DisplayFormat(DataFormatString = "{0:N0}")]
+        [Display(Name = "金額")]
         public int Amount { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
+        [Display(Name = "日期")]
         public DateTime Date { get; set; }
+        [Display(Name = "備註")]
         public string Remark { get; set; }
+        [Display(Name = "類別")]
         public BillType Type { get; set; }
     }
 
