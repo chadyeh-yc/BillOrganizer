@@ -17,18 +17,25 @@ namespace BillOrganizer.Controllers
         [ChildActionOnly]
         public ActionResult ShowHistory()
         {
-
-
             var history = new List<Models.ViewModels.BillorganizerViewModel>();
-
+            Random rnd = new Random();
+            Models.ViewModels.BillType BillType;
             for (int i = 0; i < 100; i++)
             {
+                if (rnd.Next(2) == 0)
+                {
+                    BillType = Models.ViewModels.BillType.支出;
+                }
+                else
+                {
+                    BillType = Models.ViewModels.BillType.收入;
+                }
                 var BillorganizerItem = new Models.ViewModels.BillorganizerViewModel
                 {
-                    Type = Models.ViewModels.BillType.收入,
-                    Amount = 100,
-                    Date = new DateTime(2017, 4, 10),
-                    Remark = "發傳單"
+                    Type = BillType,
+                    Amount = rnd.Next(9999999),
+                    Date = new DateTime(2016, 1, 1).AddDays(rnd.Next(900)),
+                    Remark = @"Item" + i.ToString()
                 };
                 history.Add(BillorganizerItem);
             }
