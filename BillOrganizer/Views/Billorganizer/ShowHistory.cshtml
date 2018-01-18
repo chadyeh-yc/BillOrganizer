@@ -19,6 +19,9 @@
         <tr>
             <th>#</th>
             <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Amount)
             </th>
             <th>
@@ -27,13 +30,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.Remark)
             </th>
-            <th></th>
         </tr>
     
     @{ var index = 1;}
     @foreach (var item in Model) {
         <tr>
             <td>@(index)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
