@@ -5,7 +5,7 @@ using System.Text;
 using System.Linq.Expressions;
 
 
-namespace ServiceLab.Repositories
+namespace BillOrganizer.Repositories
 {
     public interface IRepository<T> where T : class
     {

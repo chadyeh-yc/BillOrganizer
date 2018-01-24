@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.Entity;
-using ServiceLab.Models;
+using BillOrganizer.Models;
 
-namespace ServiceLab.Repositories
+namespace BillOrganizer.Repositories
 {
     public class EFUnitOfWork : IUnitOfWork
     {
@@ -13,7 +13,7 @@ namespace ServiceLab.Repositories
 
         public EFUnitOfWork()
         {
-            Context = new Database1Entities();
+            Context = new JournalEntries();
         }
 
         public void Save()
