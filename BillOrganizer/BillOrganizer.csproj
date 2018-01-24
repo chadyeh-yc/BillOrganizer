@@ -157,6 +157,7 @@
     </Compile>
     <Compile Include="Models\AccountBook.cs" />
     <Compile Include="Models\JournalEntries.cs" />
+    <Compile Include="Models\JournalEntriesService.cs" />
     <Compile Include="Models\ViewModels\BillorganizerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -16,18 +16,11 @@ namespace BillOrganizer.Controllers
             return View();
         }
 
-        private readonly JournalEntries journalEntries = new JournalEntries();
-
+        private readonly JournalEntriesService journalEntriesService = new JournalEntriesService();
         [ChildActionOnly]
         public ActionResult ShowHistory()
         {
-            var result = journalEntries.AccountBook.Take(100).Select(c => new BillorganizerViewModel
-            {
-                 Type = c.Categoryyy == 1 ? BillType.支出 : BillType.收入,
-                 Amount = c.Amounttt,
-                 Date = c.Dateee,
-                 Remark = c.Remarkkk,
-            }).ToList();
+            var result = journalEntriesService.GetTop100JournalEntries();
             return View(result);
         }
     }
