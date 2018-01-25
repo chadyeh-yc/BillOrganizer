@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BillOrganizer.Models;
 using BillOrganizer.Models.ViewModels;
+using BillOrganizer.Repositories;
 
 namespace BillOrganizer.Controllers
 {
@@ -16,7 +17,8 @@ namespace BillOrganizer.Controllers
             return View();
         }
 
-        private readonly JournalEntriesService journalEntriesService = new JournalEntriesService();
+        private readonly JournalEntriesService journalEntriesService = new JournalEntriesService(new EFUnitOfWork());
+
         [ChildActionOnly]
         public ActionResult ShowHistory()
         {
