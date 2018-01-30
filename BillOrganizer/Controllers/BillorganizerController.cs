@@ -17,12 +17,17 @@ namespace BillOrganizer.Controllers
             return View();
         }
 
-        private readonly JournalEntriesService journalEntriesService = new JournalEntriesService(new EFUnitOfWork());
+        private readonly JournalEntriesService _journalEntriesService;
+        public BillorganizerController()
+        {
+            var _unitOfWork = new EFUnitOfWork();
+            _journalEntriesService = new JournalEntriesService(_unitOfWork);
+        }
 
         [ChildActionOnly]
         public ActionResult ShowHistory()
         {
-            var result = journalEntriesService.GetTop100JournalEntries();
+            var result = _journalEntriesService.GetNumberOfJournalEntries(100);
             return View(result);
         }
     }

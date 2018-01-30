@@ -9,21 +9,21 @@ namespace BillOrganizer.Models
 {
     public class JournalEntriesService
     {
-        private readonly JournalEntries journalEntries;
-        private readonly IRepository<AccountBook> repository;
-        private readonly IUnitOfWork iunitOfWork;
+        private readonly JournalEntries _journalEntries;
+        private readonly IRepository<AccountBook> _repository;
+        private readonly IUnitOfWork _iunitOfWork;
 
         public JournalEntriesService(IUnitOfWork unitOfWork)
         {
-            journalEntries = new JournalEntries();
-            iunitOfWork = unitOfWork;
-            repository = new Repository<AccountBook>(iunitOfWork);
+            _journalEntries = new JournalEntries();
+            _iunitOfWork = unitOfWork;
+            _repository = new Repository<AccountBook>(_iunitOfWork);
         }
 
-        public IList<BillorganizerViewModel> GetTop100JournalEntries()
+        public IList<BillorganizerViewModel> GetNumberOfJournalEntries(int numberOfEntry)
         {
-            var source = repository.LookupAll();
-            var result = source.Take(100).Select(c => new BillorganizerViewModel
+            var source = _repository.LookupAll();
+            var result = source.OrderByDescending(c => c.Dateee).ThenByDescending(c => c.Id).Take(numberOfEntry).Select(c => new BillorganizerViewModel
             {
                 Type = c.Categoryyy == 1 ? BillType.支出 : BillType.收入,
                 Amount = c.Amounttt,
@@ -35,7 +35,7 @@ namespace BillOrganizer.Models
 
         public void Save()
         {
-            iunitOfWork.Save();
+            _iunitOfWork.Save();
         }
 }
 }
