@@ -50,7 +50,7 @@ namespace BillOrganizer.Models.ViewModels
          {
             if (DateTime.TryParse(value.ToString(), out DateTime dateValue))
             {
-                if (dateValue.Date >= _dateTime.Date)
+                if (dateValue.Date <= _dateTime.Date)
                 {
                     // valid
                     return ValidationResult.Success;
@@ -58,7 +58,7 @@ namespace BillOrganizer.Models.ViewModels
                 else
                 {
                     // invalid
-                    var errorMsg = string.Format($"您輸入的日期{dateValue.ToString("yyyy/MM/dd")}小於{_dateTime.ToString("yyyy/MM/dd")}");
+                    var errorMsg = string.Format($"您輸入的日期{dateValue.ToString("yyyy/MM/dd")}大於{_dateTime.ToString("yyyy/MM/dd")}");
                     return new ValidationResult(errorMsg);
                 }
             }
