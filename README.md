@@ -42,3 +42,15 @@ skilltree bill organizer homework
 - 進階版
   - 登入才可以寫入資料。
   - 如果你已經將寫入改為 AJAX 請嘗試維持 AJAX實做這塊
+
+## Day5.
+- 初階版
+  - 實做分頁功能
+    - 將記帳簿路由改為改為 SkillTree
+    - EX：http://localhost/skilltree
+  - 增加年月列表功能
+    - 可指定年月顯示該年月的所有收支
+    - 輸入 http://localhost/skilltree/yyyy/mm 可看到該年月收支
+- 進階版
+  - 現在你什麼需求都知道了
+  - 請使用提供的DB，重寫一個記帳本。
